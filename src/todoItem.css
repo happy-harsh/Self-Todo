@@ -1,0 +1,42 @@
+.button{
+  background:linear-gradient(135deg,#153677,#4e085f);
+    color: white;
+    padding: 10px;
+    transition: background-color 0.3s;
+  }
+  
+.button:hover {
+  background:rgb(27, 255, 2);
+} 
+
+
+.list {
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.list-button {
+  margin-right: 10px;
+  margin-top: 10px;
+  background:linear-gradient(135deg,#a0a7b7,#ca8cd9);
+  transition: background-color 0.3s;
+  border-radius: 10px;
+  border-color: #4e085f;
+}
+.list-button:hover {
+  background:red;
+} 
+
+.list-text {
+  font-size: 18px;
+  color:aliceblue;
+  align-items: center;
+}
