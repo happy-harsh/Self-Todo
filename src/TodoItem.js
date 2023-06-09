@@ -18,14 +18,11 @@ const TodoItem = () => {
       renderItem("");
     }
   };
-
-  const deleteItem=(index)=>{
+  const DeleteItem=(index)=>{
     const updatedList=[...listItem]
     updatedList.splice(index,1)
     setListItem(updatedList);
-}
-
-
+  }
 
   return (
     <>
@@ -49,7 +46,7 @@ const TodoItem = () => {
         <ul class="list">
           {listItem.map((item,index) => {
             return (
-              <TodoList it={item} id={index} onSelect={deleteItem}/>
+              <TodoList it={item} id={index} onSelect={DeleteItem}/>
             );
           })}
         </ul>
