@@ -2,30 +2,50 @@ import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import "./todoItem.css";
 import { useState } from "react";
-import TodoList from "./TodoList";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from '@mui/icons-material/Edit';
+
 
 const TodoItem = () => {
   const [item, renderItem] = useState("");
   const [listItem, setListItem] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const editItem=()=>{
+    return 0;
+  }
   const addItemToList = () => {
-    if (item === "") {
+    if (item === "" && item!=='Enter') {
       alert("NO Todo present ");
     } else {
+      const allInputData = {id: new Date().getTime.toString(), name: item};
       setListItem((oldItem) => {
-        return [...oldItem, item];
+        return [...oldItem, allInputData];
       });
+      
       renderItem("");
     }
   };
-  const DeleteItem=(index)=>{
-    const updatedList=[...listItem]
-    updatedList.splice(index,1)
+
+  const DeleteItem = (ind) => {
+    // const updatedList = [...listItem];
+    // updatedList.splice(ind, 1);
+    const updatedList = listItem.filter((index)=>{
+      return index===ind;
+    })
     setListItem(updatedList);
-  }
+  };
 
   return (
-    <>
+    <div>
       <div className="input-group">
         <input
           type="text"
@@ -43,14 +63,37 @@ const TodoItem = () => {
         </div>
       </div>
 
-        <ul class="list">
-          {listItem.map((item,index) => {
-            return (
-              <TodoList it={item} id={index} onSelect={DeleteItem}/>
-            );
-          })}
-        </ul>
-    </>
+      <ol className="list">
+        {listItem.map((elem) => {
+          return (
+            <li>
+              <p
+                class="list-text"
+                style={isHovered ? { textDecoration: "line-through" } : {}}
+              >
+                {elem.name}
+              </p>
+              <button
+                class="list-edit"
+                onClick={()=>{editItem(elem.id)}}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <EditIcon/>
+                </button>
+              <button
+                class="list-button"
+                onClick={()=>{DeleteItem(elem.id)}}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <DeleteIcon />
+              </button>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
   );
 };
 
