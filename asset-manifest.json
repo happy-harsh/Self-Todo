@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/happy-harsh/Self-Todo/static/css/main.45a2d9db.css",
-    "main.js": "/happy-harsh/Self-Todo/static/js/main.0766e7a4.js",
-    "static/js/787.97a945da.chunk.js": "/happy-harsh/Self-Todo/static/js/787.97a945da.chunk.js",
-    "static/media/logo.png": "/happy-harsh/Self-Todo/static/media/logo.58552545f97fee15b2ff.png",
-    "index.html": "/happy-harsh/Self-Todo/index.html",
-    "main.45a2d9db.css.map": "/happy-harsh/Self-Todo/static/css/main.45a2d9db.css.map",
-    "main.0766e7a4.js.map": "/happy-harsh/Self-Todo/static/js/main.0766e7a4.js.map",
-    "787.97a945da.chunk.js.map": "/happy-harsh/Self-Todo/static/js/787.97a945da.chunk.js.map"
+    "main.css": "/Self-Todo/static/css/main.45a2d9db.css",
+    "main.js": "/Self-Todo/static/js/main.cd1a8bd5.js",
+    "static/js/787.97a945da.chunk.js": "/Self-Todo/static/js/787.97a945da.chunk.js",
+    "static/media/logo.png": "/Self-Todo/static/media/logo.58552545f97fee15b2ff.png",
+    "index.html": "/Self-Todo/index.html",
+    "main.45a2d9db.css.map": "/Self-Todo/static/css/main.45a2d9db.css.map",
+    "main.cd1a8bd5.js.map": "/Self-Todo/static/js/main.cd1a8bd5.js.map",
+    "787.97a945da.chunk.js.map": "/Self-Todo/static/js/787.97a945da.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.45a2d9db.css",
-    "static/js/main.0766e7a4.js"
+    "static/js/main.cd1a8bd5.js"
   ]
 }
