@@ -3,44 +3,74 @@ import AddIcon from "@mui/icons-material/Add";
 import "./todoItem.css";
 import { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from '@mui/icons-material/Edit';
-
+import EditIcon from "@mui/icons-material/Edit";
 
 const TodoItem = () => {
   const [item, renderItem] = useState("");
   const [listItem, setListItem] = useState([]);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [hoveredTextId, setHoveredTextId] = useState(null);
+  const [toggleSubmit, settoggleSubmit] = useState(true);
+  const [isEditItem,setEditItem]=useState(null)
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
+  const handleButtonHover = () => {
+    setIsButtonHovered(true);
   };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
+  const handleButtonLeave = () => {
+    setIsButtonHovered(false);
   };
 
-  const editItem=()=>{
-    return 0;
-  }
+  const handleTextHover = (textId) => {
+    setHoveredTextId(textId);
+  };
+
+  const handleTextLeave = () => {
+    setHoveredTextId(null);
+  };
+
+  const editItem = (id) => {
+    // find(element, index,array and indexvalue)
+    let newEditItem = listItem.find((elem) => {
+      return elem.id === id;
+    });
+
+    settoggleSubmit(false);
+    renderItem(newEditItem.name)
+    setEditItem(id);
+  };
   const addItemToList = () => {
-    if (item === "" && item!=='Enter') {
+    if (item === "" && item !== "Enter") {
       alert("NO Todo present ");
-    } else {
-      const allInputData = {id: new Date().getTime.toString(), name: item};
-      setListItem((oldItem) => {
-        return [...oldItem, allInputData];
-      });
-      
+    } 
+    else if(item!=="" && !toggleSubmit)
+    {
+      setListItem(listItem.map((elem)=>{
+  
+        if(elem.id===isEditItem){
+          return {...elem,name:item}
+        }
+        return elem;
+      }))
+      settoggleSubmit(true);
+      renderItem("");
+    }
+    else
+    {
+      const allInputData = { id: new Date().getTime().toString(), name: item };
+      console.log(allInputData)
+      setListItem([...listItem,allInputData]);
+
       renderItem("");
     }
   };
 
-  const DeleteItem = (ind) => {
+  const DeleteItem = (index) => {
     // const updatedList = [...listItem];
-    // updatedList.splice(ind, 1);
-    const updatedList = listItem.filter((index)=>{
-      return index===ind;
-    })
+    // updatedList.splice(index, 1);
+    const updatedList = listItem.filter((elem) => {
+      return elem.id!==index;
+    });
     setListItem(updatedList);
   };
 
@@ -57,42 +87,69 @@ const TodoItem = () => {
           }}
         />
         <div className="input-group-append">
-          <button className="button" type="button" onClick={addItemToList}>
-            <AddIcon />
-          </button>
+          {toggleSubmit ? (
+            <button className="addbutton" type="button" onClick={addItemToList}>
+              <AddIcon />
+            </button>
+          ) : (
+            <button
+              className="edit"
+              onClick={() => {
+                addItemToList();
+              }}
+            >
+              <EditIcon />
+            </button>
+          )}
         </div>
       </div>
 
-      <ol className="list">
+      <ul>
         {listItem.map((elem) => {
           return (
-            <li>
+            <li
+              className="container"
+
+              onMouseEnter={() => {
+                handleTextHover(elem.id);
+              }}
+              onMouseLeave={handleTextLeave}
+            >
               <p
-                class="list-text"
-                style={isHovered ? { textDecoration: "line-through" } : {}}
+                            key={elem.id}
+                className="right"
+                style={
+                  isButtonHovered && hoveredTextId === elem.id
+                    ? { textDecoration: "line-through" }
+                    : {}
+                }
               >
                 {elem.name}
               </p>
-              <button
-                class="list-edit"
-                onClick={()=>{editItem(elem.id)}}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                <EditIcon/>
+              <div className="left">
+                <button
+                  className="edit"
+                  onClick={() => {
+                    editItem(elem.id);
+                  }}
+                >
+                  <EditIcon />
                 </button>
-              <button
-                class="list-button"
-                onClick={()=>{DeleteItem(elem.id)}}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                <DeleteIcon />
-              </button>
+                <button
+                  className="del"
+                  onClick={() => {
+                    DeleteItem(elem.id);
+                  }}
+                  onMouseEnter={handleButtonHover}
+                  onMouseLeave={handleButtonLeave}
+                >
+                  <DeleteIcon />
+                </button>
+              </div>
             </li>
           );
         })}
-      </ol>
+      </ul>
     </div>
   );
 };

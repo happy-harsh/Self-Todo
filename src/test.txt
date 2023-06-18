@@ -1,0 +1,101 @@
+{listItem.map((item,index) => {
+    return (
+      <div className="container">
+        <div className="left">
+        <h5
+          key={index}
+          onMouseEnter={() => handleTextHover(index)}
+          onMouseLeave={handleTextLeave}
+          className={isHovered && hoveredTextId === index ? 'hovered-text' : ''}
+        >
+          {console.log(index)}
+          {item}
+        </h5>
+        </div>
+        <div className="right">
+          {/* <button
+          className="edit"
+            onClick={() => {
+              editItem(index);
+            }}
+          >
+            <EditIcon />
+          </button> */}
+          <button
+          className="del"
+            onClick={() => {
+              DeleteItem(index);
+            }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <DeleteIcon />
+          </button>
+        </div>
+      </div>
+    );
+  })}
+
+
+
+
+
+
+
+
+
+
+  import React, { useState } from 'react';
+import './App.css';
+
+const App = () => {
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [hoveredTextId, setHoveredTextId] = useState(null);
+
+  const handleButtonHover = () => {
+    setIsButtonHovered(true);
+  };
+
+  const handleButtonLeave = () => {
+    setIsButtonHovered(false);
+  };
+
+  const handleTextHover = (textId) => {
+    setHoveredTextId(textId);
+  };
+
+  const handleTextLeave = () => {
+    setHoveredTextId(null);
+  };
+
+  const textList = [
+    { id: 1, text: 'Text 1' },
+    { id: 2, text: 'Text 2' },
+    { id: 3, text: 'Text 3' }
+  ];
+
+  return (
+    <div>
+      <button
+        onMouseEnter={handleButtonHover}
+        onMouseLeave={handleButtonLeave}
+      >
+        Hover Me
+      </button>
+      <ul>
+        {textList.map((textItem) => (
+          <li
+            key={textItem.id}
+            onMouseEnter={() => handleTextHover(textItem.id)}
+            onMouseLeave={handleTextLeave}
+            className={isButtonHovered && hoveredTextId === textItem.id ? 'hovered-text' : ''}
+          >
+            {textItem.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;

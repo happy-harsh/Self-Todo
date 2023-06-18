@@ -4,7 +4,7 @@ import TodoItem from './TodoItem';
 import image from"./logo.png"
 function App() {
 
-  return (<>
+  return (
   <div className="container-fluid">
       <div className="row justify-content-center">
         <div className="col-lg-6 text-center">
@@ -13,7 +13,7 @@ function App() {
             alt="myimg"
             className='image'
           />
-          <h1 className='main-text'>ToDO List</h1>
+          <h1 className='main-text'>My Self Todo</h1>
           <div className="sub-text">
             <h4>Add Your List Here</h4>
           </div>
@@ -26,8 +26,6 @@ function App() {
           <h1>HIIIIII</h1>
         </div> */}
     </div>
-  
-  </>
   );
 }
 

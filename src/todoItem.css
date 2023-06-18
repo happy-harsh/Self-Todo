@@ -1,48 +1,60 @@
-.button{
+.addbutton{
   background:linear-gradient(135deg,#153677,#4e085f);
     color: white;
     padding: 10px;
     transition: background-color 0.3s;
   }
   
-.button:hover {
+.addbutton:hover {
   background:rgb(27, 255, 2);
 } 
 
-.button{
-  background:linear-gradient(135deg,#153677,#4e085f);
-    color: white;
-    padding: 10px;
-    transition: background-color 0.3s;
-  }
-  
-.button:hover {
-  background:rgb(27, 255, 2);
-} 
-
-
-.list {
+ul{
+  width: 100%;
   list-style: none;
-  padding: 0;
+  padding: 0px;
+}
+.container {
+  list-style: none;
   margin-top: 20px;
-}
-
-.list li {
   display: flex;
-  /* justify-content: space-between; */
-  color: aliceblue;
-  font-size:large;
+  justify-content: space-between;
+  align-items: center;
+  background-color: antiquewhite;
+  border: #153677 solid;
+  border-radius: 10px;
+  height: 60px;
+  width: 100%;
+
 }
 
-.list-button{
-  background:rgb(244, 247, 244);
+.right {
+  flex-grow: 1;
+  margin-top: 13px;
+  text-align: start;
 }
-.list-button:hover{
-  background:rgb(255, 2, 32);
+
+.left{
+  display: flex;
+  gap: 10px;
 }
-.list-edit{
-  background:rgb(244, 247, 244);
+
+.del:hover {
+  background:rgb(255, 2, 44);
+  color: white;
+  padding: 10px;
+  transition: background-color 0.3s;
+
+} 
+.edit{
+  padding: 10px;
 }
-.list-edit:hover{
-  background:rgb(255, 2, 32);
+.del{
+  padding: 10px;
 }
+.edit:hover {
+  background:rgb(2, 200, 255);
+  color: white;
+  padding: 10px;
+  transition: background-color 0.3s;
+} 
