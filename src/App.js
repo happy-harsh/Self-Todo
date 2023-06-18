@@ -13,7 +13,7 @@ function App() {
             alt="myimg"
             className='image'
           />
-          <h1 className='main-text'>My Self Todo</h1>
+          <h1 className='main-text'>My Self-Todo</h1>
           <div className="sub-text">
             <h4>Add Your List Here</h4>
           </div>
